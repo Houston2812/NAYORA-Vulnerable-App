@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vulnerable App Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+<style>
+    .navbar-default .navbar-nav li a:hover, 
+ .navbar-default .navbar-nav > .active > a:hover {
+     background-color: initial;
+ }
+</style>
+<body>
+<section class="hero is-fullheight" style="background-color:#ffe8e1;">
+
+    <div class="hero-head">
+        <nav class="navbar"  style="background-color: #6b717e;">
+            <div class="container" >
+
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end" >
+                        <a href="{{ url_for('index') }}" class="navbar-item" style="color: #eff2f1; font-size: 20px; background-color: transparent !important; ">
+                            Home
+                        </a>
+<!--                         
+                        <a href="" class="navbar-item"  style="color: #66666e; font-size: 20px;  ">
+                            Profile
+                        </a> -->
+                        {% if not session.name %}
+                        <a href="{{ url_for('get_login') }}" class="navbar-item"  style="color: #eff2f1; font-size: 20px; background-color: transparent !important;">
+                            Login
+                        </a>
+                        {% endif %}
+
+                        <!-- <a href="" class="navbar-item"  style="color: #66666e; font-size: 20px;  ">
+                            Sign Up
+                        </a> -->
+                        {% if session.name %}
+                        <a href="{{ url_for('logout') }}" class="navbar-item"  style="color: #eff2f1; font-size: 20px;  background-color: transparent !important;">
+                            Logout
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</section>
+</body>
+
+</html>
