@@ -1,5 +1,5 @@
 # My Vulnerable Application
-## For NAYORA 2022
+## For BC / IT COMMİTTEE - Cyber Security
 Custom vulnerable web application designed to be used during the educational course for NAYORA. 
 
 It is vulnerable to the following attacks:  
